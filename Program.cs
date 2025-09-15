@@ -4,7 +4,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins("https://tela-de-login-academia.onrender.com/")
+        policy.WithOrigins("https://tela-de-login-academia.onrender.com")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -13,6 +13,8 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors("AllowReactApp");
+
+app.MapGet("/", () => "API de Login no ar!");
 
 app.MapPost("/login", (LoginRequest request) =>
 {
